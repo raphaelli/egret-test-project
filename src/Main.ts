@@ -93,15 +93,15 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        let sky = this.createBitmapByName("bg_jpg");
-        this.addChild(sky);
+        // let sky = this.createBitmapByName("bg_jpg");
+        // this.addChild(sky);
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
-        sky.width = stageW;
-        sky.height = stageH;
+        // sky.width = stageW;
+        // sky.height = stageH;
 
         let topMask = new egret.Shape();
-        topMask.graphics.beginFill(0x000000, 0.5);
+        topMask.graphics.beginFill(0x000000, 0.8);
         topMask.graphics.drawRect(0, 0, stageW, 172);
         topMask.graphics.endFill();
         topMask.y = 33;
@@ -143,6 +143,40 @@ class Main extends egret.DisplayObjectContainer {
         textfield.y = 135;
         this.textfield = textfield;
 
+        //战斗区域
+        let fightArea = new egret.Shape();
+        fightArea.graphics.beginFill(0x000000, 0.8);
+        fightArea.graphics.drawRect(10, 0, stageW - 20, 320);
+        fightArea.graphics.endFill();
+        fightArea.y = 300;
+        this.addChild(fightArea);
+
+        //角色一  (判断用户拥有的角色数量调整显示位置)
+        var player01: egret.Shape = new egret.Shape();
+        player01.graphics.beginFill(0x49DE82, 0.6);  //角色框背景
+        player01.graphics.drawRect(0, 0, 160, 55);  //角色框宽高比
+        player01.graphics.endFill();
+        player01.x = 60;   //角色框位置
+        player01.y = 420;
+        this.addChild(player01);
+
+        //敌人一
+        var enemy01: egret.Shape = new egret.Shape();
+        enemy01.graphics.beginFill(0xffffff, 0.3);  //角色框背景
+        enemy01.graphics.drawRect(0, 0, 160, 55);  //角色框宽高比
+        enemy01.graphics.endFill(); 
+        enemy01.x = stageW / 2 + 60;   //角色框位置
+        enemy01.y = 420;
+        this.addChild(enemy01);
+
+        let fightline = new egret.Shape();
+        fightline.graphics.lineStyle(2, 0xffffff);
+        fightline.graphics.moveTo(0, 0);
+        fightline.graphics.lineTo(0, 260);
+        fightline.graphics.endFill();
+        fightline.x = 300;
+        fightline.y = stageW / 2;
+        this.addChild(fightline);
 
     }
 
